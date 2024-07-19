@@ -2,15 +2,13 @@
 import { toFileStream } from 'qrcode';
 import { PassThrough } from 'stream';
 
+import { PUBLIC_URL } from '$env/static/public';
+
 export async function GET({ url, request, params, cookies }) {
 	try {
 		let passedURL = url.searchParams.get('url');
-		console.log('passed: ', passedURL);
 
-		if (!passedURL) passedURL = 'http://localhost:3000';
-
-		const text = 'https://qualitymalt.se';
-		const filename = 'qrcode.png';
+		if (!passedURL) passedURL = PUBLIC_URL;
 
 		const passThrough = new PassThrough();
 

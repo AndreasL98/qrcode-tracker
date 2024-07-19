@@ -6,10 +6,6 @@
 	export let data;
 	const { projects } = data;
 
-	onMount(() => {
-		console.log('daya : ', data);
-	});
-
 	let showNewProjectModal = false;
 	function closeNewProjectModal() {
 		showNewProjectModal = false;

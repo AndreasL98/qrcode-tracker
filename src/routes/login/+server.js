@@ -7,16 +7,16 @@ import jwt from 'jsonwebtoken';
 
 import { error, json, redirect } from '@sveltejs/kit';
 
+import { JSON_SECRET_KEY } from '$env/static/private';
+
 export async function POST({ url, request, params, cookies }) {
 	try {
 		const data = await request.json();
-		console.log('DATA: ', data);
 
 		const { email, password } = data;
 
 		try {
 			const { user, token } = await authenticateUser(email, password);
-			console.log('USER: ', user);
 
 			cookies.set('jwt', token, {
 				path: '/',
@@ -51,7 +51,7 @@ function authenticateUser(email, password) {
 				console.log('ERROR:', err);
 				reject(err); // Reject the promise with the error
 			} else if (user) {
-				const jsonSecretKey = 'poop';
+				const jsonSecretKey = JSON_SECRET_KEY;
 				const token = jwt.sign({ id: user._id }, jsonSecretKey);
 
 				resolve({ user, token }); // Resolve the promise with the user and token

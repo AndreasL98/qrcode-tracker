@@ -8,7 +8,7 @@
 	import { PUBLIC_URL } from '$env/static/public';
 
 	export let data;
-	console.log('data layout: ', data);
+
 	const { projects } = data;
 
 	let itemsList;

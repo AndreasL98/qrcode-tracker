@@ -37,7 +37,7 @@ async function createUser() {
 function runHook() {
 	console.log('RUNNING INITIATION HOOK');
 
-	initiatePassport();
+	initiatePassport(); // move out of function and delete runHook();
 }
 runHook();
 
