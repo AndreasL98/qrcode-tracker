@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  mongo:
+    image: mongo:5.0.2
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongo-data:/data/db
+
+  sveltekit:
+    build: .
+    ports:
+      - '3000:3000'
+    environment:
+      DB_URL: mongodb://mongo:27017/qrcode-tracker
+
+    depends_on:
+      - mongo
+
+volumes:
+  mongo-data:
