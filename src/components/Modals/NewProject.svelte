@@ -41,11 +41,22 @@
 		if (response.status == 200) {
 			const responseData = await response.json();
 			document.location.href = `${PUBLIC_URL}/dashboard/${responseData._id}`;
+		} else {
+			let errorCode = response.status;
+
+			console.log('res: ', response);
+			const responseData = await response.json();
+			console.log('body: ', responseData);
+			let errorMessage = responseData.message;
+
+			error = `${errorCode} - ${errorMessage}`;
 		}
 	}
 
 	import { createEventDispatcher } from 'svelte';
 	const dispatch = createEventDispatcher();
+
+	let error = '';
 </script>
 
 <!-- <button
@@ -112,6 +123,10 @@
 					bind:value={projectDescription}
 				></textarea>
 			</div>
+
+			{#if error}
+				<p class="mt-2 text-red-600 text-lg"><b>Error: {error}</b></p>
+			{/if}
 
 			<div class="mt-4">
 				<!-- Your content here -->

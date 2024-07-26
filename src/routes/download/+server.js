@@ -9,6 +9,7 @@ export async function GET({ url, request, params, cookies }) {
 		let passedURL = url.searchParams.get('url');
 
 		if (!passedURL) passedURL = `${PUBLIC_URL}`;
+		console.log('Passed URL: ', passedURL);
 
 		const passThrough = new PassThrough();
 

@@ -9,7 +9,11 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: true
 	},
-	phoneNumber: String
+	phoneNumber: String,
+	maxProjects: {
+		type: Number,
+		default: 5
+	}
 });
 
 userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });

@@ -91,7 +91,7 @@
 			<p class="text-lg">Project URL QR code</p>
 			<img class="mt-4 w-56 h-56" src="/view-qr?url={project.url}" alt="" />
 			<button
-				on:click={() => downloadQRCode(`${PUBLIC_URL}/${project.identification}`)}
+				on:click={() => downloadQRCode(`${project.url}`)}
 				class="mt-4 w-56 px-4 py-2 mb-4 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600"
 			>
 				Download QR Code
